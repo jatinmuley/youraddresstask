@@ -121,34 +121,22 @@ class _AcchaState extends State<Accha> {
               child: ListView.builder(
                 //physics: BouncingScrollPhysics(),
                 //shrinkWrap: true,
-                itemCount: dishName.length,
+                itemCount: restro.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    color: CupertinoColors.inactiveGray,
-                    child: GestureDetector(
-                      onTap: () {
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: dishName.length,
-                            itemBuilder: (context, index) {
-                              return ListTile(title: Text(dishName[index]));
-                            },
-                          ),
-                        );
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(5),
+                    elevation: 5,
+                    //color: CupertinoColors.inactiveGray,
+                    child: ExpansionTile(
+                      title: Container(
                         child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  "asset/aa.jpg",
-                                  scale: 6,
-                                ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                "asset/aa.jpg",
+                                scale: 6,
                               ),
                             ),
                             SizedBox(
@@ -157,14 +145,26 @@ class _AcchaState extends State<Accha> {
                             Expanded(
                                 flex: 4,
                                 child: Container(
-                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                    child: Text(dishName[index]))),
-                            Expanded(
-                                flex: 1,
-                                child: Icon(CupertinoIcons.chevron_down))
+                                    padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                                    child: Text(restro[index].title))),
                           ],
                         ),
                       ),
+                      children: [
+                        Column(
+                          children: _buildExpandableContent(restro[index]),
+                        ),
+                        // Expanded(
+                        //   flex: 1,
+                        //   child: ListView.builder(
+                        //     //physics: BouncingScrollPhysics(),
+                        //     //shrinkWrap: true,
+                        //       itemCount: subList.length,
+                        //       itemBuilder: (context, index) {
+                        //         return Text(subList[index]);
+                        //       }),
+                        // )
+                      ],
                     ),
                   );
                 },
@@ -175,4 +175,69 @@ class _AcchaState extends State<Accha> {
       ),
     );
   }
+
+  _buildExpandableContent(Restaurant restro) {
+    List<Widget> columnContent = [];
+
+    for (String content in restro.contents) {
+      columnContent.add(
+        new Card(
+          elevation: 5,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(5),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      "asset/aa.jpg",
+                      scale: 7,
+                    ),
+                  ),
+                ),
+                Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: Column(
+                      children: [
+                        Text(content),
+
+                        //Text(price),
+                      ],
+                    )),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                ),
+                Icon(CupertinoIcons.ellipsis_circle_fill),
+              ],
+            ),
+          ),
+        ),
+      );
+      increment();
+    }
+
+    return columnContent;
+  }
+
+  int a = 0;
+
+  void increment() {
+
+    ++a;
+    print(a);
+  }
+}
+
+
+
+class Restaurant {
+  final String title;
+  List<String> contents = [];
+  List<String> prices = [];
+
+  Restaurant(this.title, this.contents, this.prices);
 }
