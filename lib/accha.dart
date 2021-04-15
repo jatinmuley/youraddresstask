@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'list.dart';
 
@@ -10,6 +11,22 @@ class Accha extends StatefulWidget {
 
 class _AcchaState extends State<Accha> {
   bool switchState = false;
+  bool checkBoxValue = false;
+  bool checkBoxValue1 = false;
+
+  int counter = 0;
+
+  void incre() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  void decre() {
+    setState(() {
+      counter--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +142,7 @@ class _AcchaState extends State<Accha> {
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 5,
-                    //color: CupertinoColors.inactiveGray,
+                    //color: CupertinoColors.activeOrange,
                     child: ExpansionTile(
                       title: Container(
                         child: Row(
@@ -176,63 +193,247 @@ class _AcchaState extends State<Accha> {
     );
   }
 
+  List<bool> check = List.filled(10000, false);
+
   _buildExpandableContent(Restaurant restro) {
     List<Widget> columnContent = [];
 
     for (String content in restro.contents) {
       columnContent.add(
-        new Card(
-          elevation: 5,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(5),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(
-                      "asset/aa.jpg",
-                      scale: 7,
+        GestureDetector(
+          onTap: () {
+            //onDabao(context);
+
+            onQuan(context);
+            // showCupertinoModalBottomSheet(
+            //   context: context,
+            //   builder: (BuildContext context) => CupertinoActionSheet(
+            //     title: Text('Extra Pav'),
+            //     cancelButton: CupertinoActionSheetAction(child: Text("Update Cart"),onPressed: (){},),
+            //     //message: const Text('Message',textAlign: TextAlign.start),
+            //     actions: [
+            //       Text("  Extra Topping"),
+            //       Card(
+            //         elevation: 0,
+            //         //color: Colors.transparent,
+            //         child: Container(
+            //           padding: EdgeInsets.all(10),
+            //           child: Column(
+            //             children: [
+            //               Row(
+            //                 children: [
+            //                   Checkbox(
+            //                     value: checkBoxValue,
+            //                     onChanged: (bool value) {
+            //                       setState(() {
+            //                         checkBoxValue = value;
+            //                       });
+            //                       print(value);
+            //                     },
+            //                   ),
+            //                   SizedBox(
+            //                     width: 10,
+            //                   ),
+            //                   Expanded(flex:20,child: Text("Butter")),
+            //                   Expanded(flex:5,child: Text("₹10")),
+            //                 ],
+            //               ),
+            //               Row(
+            //                 children: [
+            //                   Checkbox(
+            //                     value: checkBoxValue,
+            //                     onChanged: (bool value) {
+            //                       setState(() {
+            //                         checkBoxValue = value;
+            //                       });
+            //                       print(value);
+            //                     },
+            //                   ),
+            //                   SizedBox(
+            //                     width: 10,
+            //                   ),
+            //                   Expanded(flex:20,child: Text("Butter")),
+            //                   Expanded(flex:5,child: Text("₹10")),
+            //                 ],
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // );
+          },
+          child: new Card(
+            elevation: 5,
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        "asset/aa.jpg",
+                        scale: 7,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    child: Column(
-                      children: [
-                        Text(content),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Column(
+                        children: [
+                          Text(content),
+                          Text(pricee[4]),
+                        ],
+                      )),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                  ),
 
-                        //Text(price),
-                      ],
-                    )),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                ),
-                Icon(CupertinoIcons.ellipsis_circle_fill),
-              ],
+                  Text("customizable"),
+                  Icon(CupertinoIcons.ellipsis_circle_fill),
+                ],
+              ),
             ),
           ),
         ),
       );
-      increment();
     }
 
     return columnContent;
   }
 
-  int a = 0;
+  void onDabao(context) {
+    showCupertinoModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) =>
+          StatefulBuilder(builder: (context, setState) {
+        return CupertinoActionSheet(
+          //title: Text('Extra Pav'),
+          cancelButton: CupertinoActionSheetAction(
+            child: Text("Update Cart"),
+            onPressed: () {},
+          ),
+          //message: const Text('Message',textAlign: TextAlign.start),
+          actions: [
+            Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("  Extra Topping"),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Checkbox(
+                              value: checkBoxValue,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  checkBoxValue = value;
+                                });
 
-  void increment() {
+                                print(value);
+                              },
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(flex: 20, child: Text("Butter")),
+                            Expanded(flex: 5, child: Text("₹10")),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Checkbox(
+                              value: checkBoxValue1,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  checkBoxValue1 = value;
+                                });
 
-    ++a;
-    print(a);
+                                print(value);
+                              },
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(flex: 20, child: Text("Ghee")),
+                            Expanded(flex: 5, child: Text("₹20")),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        );
+      }),
+    );
+  }
+
+  void onQuan(context) {
+    showCupertinoModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) =>
+            StatefulBuilder(builder: (context, setState) {
+              return CupertinoActionSheet(
+                //title: Text('Extra Pav'),
+                cancelButton: CupertinoActionSheetAction(
+                  child: Text("Update Cart"),
+                  onPressed: () {},
+                ),
+                //message: const Text('Message',textAlign: TextAlign.start),
+                actions: [
+                  Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Pulav"),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text("Select Quantity"),
+                                  CupertinoButton(
+                                      child: Icon(CupertinoIcons.minus),
+                                      onPressed: () {
+                                        setState(() {
+                                          decre();
+                                        });
+                                      }),
+                                  Text('$counter'),
+                                  CupertinoButton(
+                                      child: Icon(CupertinoIcons.plus),
+                                      onPressed: () {
+                                        setState(() {
+                                          incre();
+                                        });
+                                      }),
+                                ],
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            }));
   }
 }
-
-
 
 class Restaurant {
   final String title;

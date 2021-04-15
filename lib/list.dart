@@ -20,7 +20,8 @@ import 'accha.dart';
 //   "Sub Item 7",],
 //
 // ];
-List pricee = ["10", "20", "30", "40", "50","60","70","80"];
+List pricee = ["₹10", "₹20", "₹30", "₹40", "₹50","₹60","₹70","₹80"];
+List<bool> hao =[true,false,true,true,false,true,true];
 List<Restaurant> restro = [
   new Restaurant(
     'Mysore Special Dosa',
@@ -45,9 +46,8 @@ List<Restaurant> restro = [
       "Sub Item 3",
     ],
     [
-      "80",
-      "90",
-      "100",
+      "10", "20", "30", "40", "50","60","70","80"
     ],
   ),
 ];
+
