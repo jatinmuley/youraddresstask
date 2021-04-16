@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:new_task/accha.dart';
-
+import 'checkoutpage.dart';
 void main() {
   runApp(MyApp());
 }
@@ -10,7 +10,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-      theme: const CupertinoThemeData(brightness: Brightness.light),
+
+      // routes: {
+
+      //     'checkout': (context) => checkoutpage(),
+
+
+
+      // },
+     // theme: const CupertinoThemeData(brightness: Brightness.light),
 
       debugShowCheckedModeBanner: false,
       // darkTheme: ThemeData(
@@ -20,7 +28,9 @@ class MyApp extends StatelessWidget {
       // ),
       //themeMode: ThemeMode.system,
       title: 'Flutter Demo',
-      home: Accha(),
+      home:
+      
+       cartPage(),
     );
   }
 }
