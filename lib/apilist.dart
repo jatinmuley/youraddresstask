@@ -281,7 +281,7 @@ class _ApiDataState extends State<ApiData> {
       //                 if (snapshot.hasData) {
       //                   return Column(
       //                     children: <Widget>[
-      //                       Text(snapshot.data.price),
+      //                       Text(snapshot.data.),
                             
                             
       //                     ],

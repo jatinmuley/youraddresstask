@@ -1,7 +1,9 @@
+
+
 import "package:flutter/cupertino.dart";
 import 'package:flutter/material.dart';
-import'list.dart';
-import 'apilist.dart';
+
+
 
 
 
@@ -38,238 +40,302 @@ class _cartPageState extends State<cartPage> {
             onPressed: () {},
           ),
         ),
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 45),
-            Container(
-              height: 65,
-              width: MediaQuery.of(context).size.width * 2,
-              color: Color(0xff292b2c),
-              child: Center(
-                  child: Text("Bombay  Fast Food ",
-                      style: TextStyle(color: CupertinoColors.white))),
-            ),
-            Container(
-                padding: EdgeInsets.all(10),
-                // height: MediaQuery.of(context).size.height * 0.125,
-                // width: MediaQuery.of(context).size.width * 2,
+        child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Column(
+            //mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 45),
+              Container(
+                height: 65,
+                width: MediaQuery.of(context).size.width * 2,
                 color: Color(0xff292b2c),
-                child: 
-                // ListView.builder(
-                //   itemCount:
-                  
-                //   itemBuilder: (context,index))
+                child: Center(
+                        child: Text("Bombay  Fast Food ",
+                            style: TextStyle(color: CupertinoColors.white))),
+              ),
+              Container(
+                      padding: EdgeInsets.all(10),
+                      // height: MediaQuery.of(context).size.height * 0.125,
+                      // width: MediaQuery.of(context).size.width * 2,
+                      color: Color(0xff292b2c),
+                      child: 
+                      // ListView.builder(
+                      //   itemCount:
+                        
+                      //   itemBuilder: (context,index))  
 
-                
-                
-                
-                Column(
-                  children: [
-                    // cartlist
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(flex: 40, child: Text("Cheese jini Dosa")),
-                        Expanded(
-                          flex: 20,
-                          child: Center(
-                            child: Row(
-                              children: [
-                                CupertinoButton(
-                                  padding: EdgeInsets.all(10),
-                                  child: Icon(
-                                    CupertinoIcons.minus,
-                                    size: 20,
-                                  ),
-                                  onPressed:_decrementcounter,
-                                ),
-                                Text("$counter"),
-                                CupertinoButton(
-                                  padding: EdgeInsets.zero,
-                                  child: Icon(
-                                    CupertinoIcons.plus,
-                                    size: 20,
-                                  ),
-                                  onPressed: _incrementcounter,
-                                  
-                                  
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(flex: 10, child: Text("$total")),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(flex: 40, child: Text("Plain Dosa")),
-                        Expanded(
-                          flex: 20,
-                          child: Center(
-                            child: Row(
-                              children: [
-                                CupertinoButton(
-                                  padding: EdgeInsets.all(10),
-                                  child: Icon(
-                                    CupertinoIcons.minus,
-                                    size: 20,
-                                  ),
-                                  onPressed: () {
+                      
+                      
+                      
+                      Column(
+                        children: [
+                          // cartlist
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Expanded(flex: 40, child: Text("Cheese jini Dosa",  style: TextStyle(color: CupertinoColors.white))),
+                              Expanded(
+                                flex:25,
+                                                              child: Container(
+                                 
+                         decoration: BoxDecoration(
+                                 border: Border.all(
+                                   color:Colors.white,
+                                   width:1.0,
+                                 ),
+                                 ),
+                                  child: Row(
                                     
-                                  },
-                                ),
-                                Text("$counter"),
-                                CupertinoButton(
-                                  padding: EdgeInsets.zero,
-                                  child: Icon(
-                                    CupertinoIcons.plus,
-                                    size: 20,
+                                    children: [
+                                      CupertinoButton(
+                                        padding: EdgeInsets.all(10),
+                                        child: Icon(
+                                          CupertinoIcons.minus,
+                                          size: 20,
+                                        ),
+                                        onPressed:_decrementcounter,
+                                      ),
+                                      Text("$counter",  style: TextStyle(color: CupertinoColors.white)),
+                                      CupertinoButton(
+                                        padding: EdgeInsets.zero,
+                                        child: Icon(
+                                          CupertinoIcons.plus,
+                                          size: 20,
+                                        ),
+                                        onPressed: _incrementcounter,
+                                        
+                                        
+                                      ),
+                                    ],
                                   ),
-                                  onPressed: () {
-                                   
-                                  },
+                                 
                                 ),
-                              ],
-                            ),
+                              ),
+
+                              Expanded(flex: 20, child: Text("$total",  style: TextStyle(color: CupertinoColors.white))),
+                              
+                            ],
                           ),
-                        ),
-                        Expanded(flex: 10, child: Text("wait")),
-                      ],
-                    ),
-                    
-                  ],
-                )
-                
-                
+                          SizedBox(height:5,width:5),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Expanded(flex: 40, child: Text("Plain Dosa",  style: TextStyle(color: CupertinoColors.white))),
+                              Expanded(
+                                flex:25,
+                                                              child: Container(
+                                  decoration: BoxDecoration(
+                                 border: Border.all(
+                                   color:Colors.white,
+                                   width:1.0,
+                                 ),
+                                 ),
+                                  child: Row(
+                                    children: [
+                                      CupertinoButton(
+                                        padding: EdgeInsets.all(10),
+                                        child: Icon(
+                                          CupertinoIcons.minus,
+                                          size: 20,
+                                        ),
+                                        onPressed: () {
+                                          
+                                        },
+                                      ),
+                                      Text("$counter",  style: TextStyle(color: CupertinoColors.white)),
+                                      CupertinoButton(
+                                        padding: EdgeInsets.zero,
+                                        child: Icon(
+                                          CupertinoIcons.plus,
+                                          size: 20,
+                                        ),
+                                        onPressed: () {
+                                         
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Expanded(flex: 20, child: Text("wait",  style: TextStyle(color: CupertinoColors.white))),
+                            ],
+                          ),
+                          
+                        ],
+                      )
+                      
+                      
+                      ),
+              Container(
+                      // width: MediaQuery.of(context).size.width * 5,
+                      // 
+                      // height: MediaQuery.of(context).size.height * 0.100,
+                      padding: EdgeInsets.fromLTRB(11, 0, 0, 5),
+                      child: Text("Message:",  style: TextStyle(color: CupertinoColors.white))),
+              Container(
+                margin: EdgeInsets.all(9),
+                color: Color(0xff292b2c),
+                child: CupertinoTextField(
+                      placeholder: ("Your Special Request (Optional)"),
+                      textAlign: TextAlign.center,
+                      maxLines: 6,
                 ),
-            Container(
-                // width: MediaQuery.of(context).size.width * 5,
-                // height: MediaQuery.of(context).size.height * 0.100,
-                padding: EdgeInsets.fromLTRB(11, 0, 0, 5),
-                child: Text("Message:")),
-            Container(
-              margin: EdgeInsets.all(9),
-              color: Color(0xff292b2c),
-              child: CupertinoTextField(
-                placeholder: ("enter your text"),
-                maxLines: 10,
               ),
-            ),
-            Text(
-                "Note : Any Restuarant Request? we will try our best to convey it.",
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: Color(0xff8e3c00),
-                )),
-            Container(
-                padding: EdgeInsets.fromLTRB(11, 0, 0, 5),
-                child: Text("Restuarant Bill", textAlign: TextAlign.start)),
-            Container(
-              padding: EdgeInsets.all(4),
-              child: Row(
-                // total amount
-
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                children: [
-                  Text(" Total items amount"),
-                  // Text("$total"),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              padding: EdgeInsets.all(7),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Packaging Charge",
-                      style: TextStyle(
+              Container(
+                 margin: EdgeInsets.all(9),
+                 height: MediaQuery.of(context).size.height * 0.020,
+                 width: MediaQuery.of(context).size.width * 1,
+                child: Text(
+                        "Note : Any Restuarant Request? we will try our best to convey it.",
+                        style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 13,
-                          color: CupertinoColors.systemGrey)),
-                  Text("Rs 0",
-                      style: TextStyle(
-                          fontSize: 13, color: CupertinoColors.systemGrey)),
-                ],
+                          fontSize: 14,
+                          color: Color(0xff8e3c00),
+                        )),
               ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              padding: EdgeInsets.all(7),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Gst"),
-                  Text("Rs 0"),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              padding: EdgeInsets.all(7),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Discount"),
-                  Text("RS 0"),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              padding: EdgeInsets.all(7),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Wallet"),
-                  Text("RS 0"),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              padding: EdgeInsets.all(7),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("To Pay"),
-                  // Text("$total"),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-                padding: EdgeInsets.all(9),
-                //  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      Divider(color:Colors.grey,
+                      thickness: 2,
+                      indent: 9,
+                      endIndent: 9,),
+              Container(
+                      padding: EdgeInsets.fromLTRB(25, 15, 20, 15),
+                      child: Text("Restuarant Bill", textAlign: TextAlign.start,style: TextStyle(color: Colors.white),)),
+              Container(
+                padding: EdgeInsets.all(4),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Pay"),
-                    CupertinoButton.filled(
-                        disabledColor: CupertinoColors.activeBlue,
-                        child: Text("Pay"),
-                        onPressed: null),
-                  ],
-                )),
-          ],
+                      // total amount
+
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                      children: [
+                        Text(" Item Total",  style: TextStyle(color: CupertinoColors.white)),
+                        // Text("$total"),
+                      ],
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                padding: EdgeInsets.all(7),
+                child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Packaging Charge",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 13,
+                                color: CupertinoColors.systemGrey)),
+                        Text("Rs 0",
+                            style: TextStyle(
+                                fontSize: 13, color: CupertinoColors.systemGrey)),
+                                
+                      ],
+                      
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+               Divider(color:Colors.grey,
+                      thickness: 0.3,
+                      indent: 9,
+                      endIndent: 9,
+
+                      ),
+              Container(
+                padding: EdgeInsets.all(7),
+                child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Gst",  style: TextStyle(color: CupertinoColors.white)),
+                        Text("Rs 0",  style: TextStyle(color: CupertinoColors.white)),
+                      ],
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                padding: EdgeInsets.all(7),
+                child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Discount",  style: TextStyle(color: CupertinoColors.white)),
+                        Text("Rs 0",  style: TextStyle(color: CupertinoColors.white)),
+                      ],
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                padding: EdgeInsets.all(7),
+                child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Wallet",  style: TextStyle(color: CupertinoColors.white)),
+                        Text("Rs 0",  style: TextStyle(color: CupertinoColors.white)),
+                      ],
+                ),
+              ),
+              Divider(color:Colors.grey,
+                      thickness: 0.3,
+                      indent: 8,
+                      endIndent: 8,
+
+                      ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                padding: EdgeInsets.all(7),
+                child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("To Pay",  style: TextStyle(color: CupertinoColors.white)),
+                         Text("$total",  style: TextStyle(color: CupertinoColors.white)),
+                      ],
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+             
+              
+            ],
+          ),
+
+         SizedBox(
+            //height: MediaQuery.of(context).size.height * 0.50,
+               //  width: MediaQuery.of(context).size.width * 0.20,
+               height: 15,
+               width: 15,
+                 ),
+                  Divider(color:Colors.grey,
+                      thickness: 2,
+                      indent: 5,
+                      endIndent: 5,
+
+                      ),
+          Container(
+                      padding: EdgeInsets.all(9),
+                      //  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Pay",  style: TextStyle(color: CupertinoColors.white)),
+                          CupertinoButton.filled(
+                              disabledColor: CupertinoColors.activeBlue,
+                              child: Text("Pay",),
+                              onPressed: null),
+                        ],
+                      )),
+                    ],
+                  ),
         ),
       ),
     );
